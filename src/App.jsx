@@ -1,6 +1,8 @@
-import contributors from './contributors.json'
 import ContributorCard from './ContributorCard'
 import './App.css'
+
+const modules = import.meta.glob('./contributors/*.json', { eager: true })
+const contributors = Object.values(modules).map((m) => m.default)
 
 const HOW_STEPS = [
   {
