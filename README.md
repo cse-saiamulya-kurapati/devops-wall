@@ -1,16 +1,58 @@
-# React + Vite
+# Contributing to DevOps Wall
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repo is a live demo of a CI/CD pipeline. Every card on the wall was added via a Pull Request.
 
-Currently, two official plugins are available:
+## How to add yourself
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Fork** this repository on GitHub.
 
-## React Compiler
+2. **Clone** your fork:
+   ```bash
+   git clone https://github.com/<your-username>/devops-wall.git
+   cd devops-wall
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. **Open** `src/contributors.json` and append your entry to the array:
+   ```json
+   {
+     "name": "Your Name",
+     "github": "your-github-username",
+     "role": "Developer",
+     "bio": "One sentence about you."
+   }
+   ```
 
-## Expanding the ESLint configuration
+   > Only `name` is required. `github`, `role`, and `bio` are optional.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+4. **Validate** your change locally before pushing:
+   ```bash
+   npm run validate
+   ```
+
+5. **Commit and push**:
+   ```bash
+   git add src/contributors.json
+   git commit -m "feat: add <Your Name> to contributors"
+   git push
+   ```
+
+6. **Open a Pull Request** against the `main` branch of the original repo.
+
+## What happens next
+
+| Step | Who |
+|---|---|
+| PR opened | You |
+| `validate-pr.yml` runs JSON validation + build | GitHub Actions |
+| Review & merge | Maintainer |
+| `deploy.yml` builds & deploys to GitHub Pages | GitHub Actions |
+| Your card is live | Everyone 🎉 |
+
+## JSON schema
+
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| `name` | string | ✅ | Your display name |
+| `github` | string | ❌ | GitHub username (no `@`) |
+| `role` | string | ❌ | e.g. `"DevOps Engineer"` |
+| `bio` | string | ❌ | One sentence |
