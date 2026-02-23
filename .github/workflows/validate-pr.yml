@@ -1,0 +1,30 @@
+name: Validate PR
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/contributors.json"
+
+jobs:
+  validate:
+    name: Validate contributors.json
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run JSON validator
+        run: node scripts/validate-contributors.mjs
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build app (smoke test)
+        run: npm run build
