@@ -11,7 +11,7 @@ const HOW_STEPS = [
   },
   {
     title: 'Add your entry',
-    desc: <>Open <code>src/contributors.json</code> and append your object — only <code>"name"</code> is required.</>,
+    desc: <>Create a new file <code>src/contributors/&lt;your-github-username&gt;.json</code> — only <code>"name"</code> is required.</>,
   },
   {
     title: 'Open a Pull Request',
@@ -133,7 +133,7 @@ export default function App() {
               DevOps<span>Wall</span>
             </span>
             <span className="footer-sub">
-              data lives in <code>src/contributors.json</code>
+              data lives in <code>src/contributors/</code>
             </span>
           </div>
           <div className="footer-right">
