@@ -30,16 +30,3 @@ jobs:
       - name: Build app (smoke test)
         run: npm run build
 
-  auto-merge:
-    name: Auto-merge on passing CI
-    needs: validate
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: write
-
-    steps:
-      - name: Merge PR
-        run: gh pr merge "${{ github.event.pull_request.number }}" --squash --auto --repo "${{ github.repository }}"
-        env:
-          GH_TOKEN: ${{ github.token }}
